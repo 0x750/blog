@@ -60,18 +60,18 @@
 }
 
 .openedTop {
-    rotate: 405deg;
+    transform: rotate(405deg);
     position: relative;
     top: 10px;
 }
 
 .openedMiddle {
     opacity: 0;
-    rotate: 360deg;
+    transform: rotate(360deg);
 }
 
 .openedBottom {
-    rotate: 315deg;
+    transform: rotate(315deg);
     position: relative;
     top: -10px;
 }
