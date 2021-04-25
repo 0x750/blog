@@ -1,4 +1,4 @@
-import Layout from "../../../components/Layout";
+import Layout from "../components/Layout";
 
 export const metadata = {
     date: "22-04-2021"

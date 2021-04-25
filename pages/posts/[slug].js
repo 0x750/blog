@@ -3,7 +3,7 @@ import dynamic from "next/dynamic"
 
 const BlogPost = ({ slug }) => {
 
-    const Rendered = dynamic(() => import(`./_posts/${slug.slug}.js`))
+    const Rendered = dynamic(() => import(`../../posts/${slug.slug}.js`))
 
     return(<Rendered />)
 }
