@@ -1,5 +1,3 @@
-import Layout from "../../components/Layout"
-import dynamic from "next/dynamic"
 import Head from "next/head";
 
 const BlogPost = ({ slug, metadata }) => {
@@ -24,6 +22,7 @@ const getStaticPaths = async () => {
     return {
         paths: [
             { params: { slug: 'learning-powershell' } },
+            // { params: { slug: 'websocket-crypto' } },
         ],
         fallback: false
     }
@@ -34,7 +33,7 @@ const getStaticProps = async ({ params }) => {
     return {
         props: {
             slug: slug,
-            metadata : require(`../../posts/${slug}.js`).metadata
+            metadata: require(`../../posts/${slug}.js`).metadata
         }
     };
 }
