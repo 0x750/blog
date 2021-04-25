@@ -1,11 +1,22 @@
 import Layout from "../../components/Layout"
 import dynamic from "next/dynamic"
+import Head from "next/head";
 
-const BlogPost = ({ slug }) => {
+const BlogPost = ({ slug, metadata }) => {
 
-    const Rendered = dynamic(() => import(`../../posts/${slug.slug}.js`))
+    const Component = require(`../../posts/${slug}.js`).default;
+    const ReactDOMServer = require("react-dom/server");
 
-    return(<Rendered />)
+    const ssr = ReactDOMServer.renderToString(<Component />);
+
+    return (
+        <>
+            <Head>
+                <title>{metadata.title ? metadata.title + ' | blog.benoit.fi' : 'blog.benoit.fi'}</title>
+            </Head>
+            <div dangerouslySetInnerHTML={{ __html: ssr }} />
+        </>
+    );
 }
 
 const getStaticPaths = async () => {
@@ -19,7 +30,13 @@ const getStaticPaths = async () => {
 }
 
 const getStaticProps = async ({ params }) => {
-    return {props: {slug: params}};
+    const { slug } = params;
+    return {
+        props: {
+            slug: slug,
+            metadata : require(`../../posts/${slug}.js`).metadata
+        }
+    };
 }
 
 export default BlogPost;
