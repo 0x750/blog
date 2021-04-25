@@ -1,6 +1,8 @@
 .navbar {
     width: 100%;
     padding: 20px 5px 5px 5px;
+    position: fixed;
+    top: 0;
 }
 
 .container {
@@ -14,6 +16,7 @@
 
 .logo {
     color: black;
+    background-color: white;
     font-family: Arial, Helvetica, sans-serif;
     /* font-family: 'Courier New', Courier, monospace; */
     font-size: 3em;
@@ -33,6 +36,7 @@
 } */
 
 .menuitems {
+    background-color: white;
     margin-left: 1em;
     font-family: 'Courier New', Courier, monospace;
     border: 3px black solid;
@@ -48,10 +52,28 @@
 } */
 
 .hamburger {
+    background-color: white;
     border: 3px solid black;
     padding: 18px 20px 22px 20px;
     display: none;
     cursor: pointer;
+}
+
+.openedTop {
+    rotate: 405deg;
+    position: relative;
+    top: 10px;
+}
+
+.openedMiddle {
+    opacity: 0;
+    rotate: 360deg;
+}
+
+.openedBottom {
+    rotate: 315deg;
+    position: relative;
+    top: -10px;
 }
 
 .hamburger > div {
@@ -59,9 +81,11 @@
     width: 30px;
     background-color: black;
     margin-top: 5px;
+    transition: .3s;
 }
 
 .mobileMenu .menuitems {
+    background-color: white;
     display: inline-block;
     margin-top: 5px;
     margin-right: 10px;

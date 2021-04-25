@@ -1,0 +1,26 @@
+.container {
+    max-width: 960px;
+    margin: 40px auto 40px auto;
+    border: 3px black solid;
+    background-color: white;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    color: black;
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    /* font-family: 'Courier New', Courier, monospace; */
+    font-size: 3em;
+    border-right: 3px black solid;
+    /* border-radius: 100px; */
+    padding: 9px 20px 8px 20px;
+    /* box-shadow: 4px 4px 10px; */
+    /* transition: .3s; */
+    cursor: pointer;
+}
+
+.links {
+    margin-left: 10px;
+}
