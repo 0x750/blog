@@ -21,16 +21,16 @@
     /* border-radius: 100px; */
     padding: 9px 20px 8px 20px;
     /* box-shadow: 4px 4px 10px; */
-    transition: .3s;
+    /* transition: .3s; */
     cursor: pointer;
 }
 
-.logo:hover {
-    /* border: 10px black solid;
-    padding: 5px 13px 0 14.5px; */
+/* .logo:hover {
+    border: 10px black solid;
+    padding: 5px 13px 0 14.5px;
     box-shadow: 2px 2px 10px;
     transition: .3s;
-}
+} */
 
 .menuitems {
     margin-left: 1em;
@@ -64,7 +64,13 @@
 .mobileMenu .menuitems {
     display: inline-block;
     margin-top: 5px;
-    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.mobileMenu > div {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
 }
 
 @media screen and (min-width: 501px) {

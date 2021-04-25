@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import styles from '../styles/components/Header.module.css';
 
-import { useSpring, animated } from 'react-spring'
+import { useSpring, animated, config } from 'react-spring'
 
 const Header = () => {
 
@@ -49,25 +49,46 @@ const Header = () => {
                     </div>
                 </animated.div>
             </div>
-            {menuIsOpened &&
-                <div className={styles.mobileMenu}>
-                    <Link href="/">
-                        <div>
-                            <span className={styles.menuitems}>home</span>
-                        </div>
-                    </Link>
-                    <Link href="/archives">
-                        <div>
-                            <span className={styles.menuitems}>archives</span>
-                        </div>
-                    </Link>
-                    <div>
-                        <span className={styles.menuitems}><a href="mailto:contact@benoit.fi">mail</a></span>
-                    </div>
-                </div>
-            }
+            {menuIsOpened && <MobileMenu closeFunction={setMenuIsOpened} />}
         </div>
     )
 }
+
+const MobileMenu = ({closeFunction}) => {
+
+    const springStyles = [0, 200, 400].map((v) =>
+        useSpring({
+            from: {
+                opacity: 0,
+                right: '20px',
+            },
+            to: {
+                opacity: 1,
+                right: '0px',
+            },
+            delay: v,
+            config: config.wobbly,
+        })
+    );
+
+    return (
+        <div className={styles.mobileMenu}>
+            <animated.div style={springStyles[0]}>
+                <Link href="/">
+                    <span onClick={() => closeFunction(false)} className={styles.menuitems}>home</span>
+                </Link>
+            </animated.div>
+            <animated.div style={springStyles[1]}>
+                <Link href="/archives">
+                    <span onClick={() => closeFunction(false)} className={styles.menuitems}>archives</span>
+                </Link>
+            </animated.div>
+            <animated.div style={springStyles[2]}>
+                <span onClick={() => closeFunction(false)} className={styles.menuitems}><a href="mailto:contact@benoit.fi">mail</a></span>
+            </animated.div>
+        </div>
+    )
+}
+
 
 export default Header;
