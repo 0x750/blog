@@ -1,10 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
 .postTitle {
     font-family: 'Roboto Mono', monospace;
     font-size: 3em;
     margin-top: 0;
+}
+
+.metadata {
+    color: grey;
 }
 
 .subTitle {
@@ -18,4 +19,8 @@
 .subTitle a {
     color: blue;
     text-decoration: underline;
+}
+
+.coverimage {
+    width: 100%;
 }

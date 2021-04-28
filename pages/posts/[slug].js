@@ -1,6 +1,21 @@
 import Head from "next/head";
+import published from "../../posts/published";
+// import dynamic from "next/dynamic";
 
 const BlogPost = ({ slug, metadata }) => {
+
+    // if(process.browser) {
+    //     let Component = dynamic(() => import(`../../posts/${slug}.js`));
+
+    //     return (
+    //         <>
+    //             <Head>
+    //                 <title>{metadata.title ? metadata.title + ' | blog.benoit.fi' : 'blog.benoit.fi'}</title>
+    //             </Head>
+    //             <Component />
+    //         </>
+    //     );
+    // }
 
     const Component = require(`../../posts/${slug}.js`).default;
     const ReactDOMServer = require("react-dom/server");
@@ -15,15 +30,12 @@ const BlogPost = ({ slug, metadata }) => {
             <div dangerouslySetInnerHTML={{ __html: ssr }} />
         </>
     );
+
 }
 
 const getStaticPaths = async () => {
-
     return {
-        paths: [
-            { params: { slug: 'learning-powershell' } },
-            // { params: { slug: 'websocket-crypto' } },
-        ],
+        paths: published.map((v) => { return { params: { slug: v } }}),
         fallback: false
     }
 }

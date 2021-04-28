@@ -1,6 +1,4 @@
 const Layout = ({children}) => {
-
-
     return (
         <article style={{
             maxWidth: '960px',
@@ -9,7 +7,7 @@ const Layout = ({children}) => {
             backgroundColor: 'white',
             marginTop: '60px',
             padding: '3em 1em 3em 1em',
-            minHeight: '2000px',
+            // minHeight: '1000px',
         }}>{children}</article>
     )
 }

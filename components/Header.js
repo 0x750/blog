@@ -9,7 +9,7 @@ const Header = () => {
 
     const [menuIsOpened, setMenuIsOpened] = useState(false);
 
-    const itemSpringStyles = [0, 600, 800, 1000, 1200].map((v) =>
+    const itemSpringStyles = [0, 600, 800, 1000, 1200, 1400].map((v) =>
         useSpring({
             from: {
                 opacity: 0,
@@ -27,7 +27,7 @@ const Header = () => {
     );
 
     return (
-        <div className={styles.navbar}>
+        <header className={styles.navbar}>
             <div className={styles.container}>
                 <Link href="/">
                     <animated.div style={itemSpringStyles[0]}>
@@ -50,6 +50,12 @@ const Header = () => {
                 <animated.div style={itemSpringStyles[4]}>
                     <span className={styles.menuitems}><a target="blank" href="https://github.com/0x750">github</a></span>
                 </animated.div>
+                <Link href="/snippets">
+                    <animated.div style={itemSpringStyles[5]}>
+                        <span className={styles.menuitems}>snippets</span>
+                    </animated.div>
+                </Link>
+
                 <animated.div style={itemSpringStyles[1]}>
                     <div onClick={() => setMenuIsOpened(!menuIsOpened)} className={styles.hamburger}>
                         <div className={menuIsOpened ? styles.openedTop : ''}></div>
@@ -59,13 +65,13 @@ const Header = () => {
                 </animated.div>
             </div>
             {menuIsOpened && <MobileMenu closeFunction={setMenuIsOpened} />}
-        </div>
+        </header>
     )
 }
 
 const MobileMenu = ({closeFunction}) => {
 
-    const springStyles = [0, 200, 400, 600].map((v) =>
+    const springStyles = [0, 200, 400, 600, 800].map((v) =>
         useSpring({
             from: {
                 opacity: 0,
@@ -97,6 +103,11 @@ const MobileMenu = ({closeFunction}) => {
             </animated.div>
             <animated.div style={springStyles[3]}>
                 <span onClick={() => closeFunction(false)} className={styles.menuitems}><a target="blank" href="https://github.com/0x750">github</a></span>
+            </animated.div>
+            <animated.div style={springStyles[4]}>
+                <Link href="/snippets">
+                    <span onClick={() => closeFunction(false)} className={styles.menuitems}>snippets</span>
+                </Link>
             </animated.div>
         </div>
     )

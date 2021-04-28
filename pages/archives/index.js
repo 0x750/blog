@@ -1,8 +1,10 @@
 import Head from 'next/head'
+import Link from 'next/link'
 
 import Layout from "../../components/Layout"
+import published from '../../posts/published'
 
-const Archives = () => {
+const Archives = ({ articles }) => {
     return (
         <>
             <Head>
@@ -11,10 +13,35 @@ const Archives = () => {
             <Layout>
                 <h1>Archives</h1>
                 <hr />
+                {articles.map((article, key) => {
+                    return (
+                        <div key={key}>
+                            <code>{article.metadata.date}</code>{' '}
+                            <Link href={`/posts/${article.slug}`}>{article.metadata.title}</Link>
+                        </div>
+                    )
+                })}
 
             </Layout>
         </>
     )
 }
 
-export default Archives;
+const getStaticProps = async () => {
+
+    const articles = published.map((v) => {
+        return {
+            slug: v,
+            metadata: require(`../../posts/${v}.js`).metadata,
+        }
+    })
+
+    return {
+        props: { articles }
+    };
+}
+
+export {
+    Archives as default,
+    getStaticProps,
+};
