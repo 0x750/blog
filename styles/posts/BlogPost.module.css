@@ -24,3 +24,30 @@
 .coverimage {
     width: 100%;
 }
+
+.layoutBasics > p,
+.layoutBasics > h2,
+.layoutBasics > h3 {
+    font-family: 'Roboto', sans-serif;
+}
+
+.layoutBasics > p,
+.layoutBasics > span,
+.layoutBasics > ul > li {
+    line-height: 1.3em;
+    font-size: 1.2em;
+}
+
+.layoutBasics h2 {
+    font-size: 2em;
+}
+
+.layoutBasics h3 {
+    font-size: 1.5em;
+}
+
+.layoutBasics p > code,
+.layoutBasics li > code {
+    background-color: lightgray;
+    padding: 2px;
+}

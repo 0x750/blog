@@ -1,5 +1,3 @@
-const published = [
-    'learning-powershell',
-];
+const published = ["learning-powershell"];
 
 export default published;

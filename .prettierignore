@@ -1,0 +1,8 @@
+.next
+styles
+node_modules
+public
+.prettierrc.json
+package-lock.json
+package.json
+README.md
