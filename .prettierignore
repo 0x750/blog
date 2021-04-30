@@ -1,5 +1,4 @@
 .next
-styles
 node_modules
 public
 .prettierrc.json
