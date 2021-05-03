@@ -1,4 +1,6 @@
 import Head from "next/head";
+import React from "react";
+
 import Layout from "../../components/Layout";
 
 import { default as basePostStyle } from "../../styles/posts/BlogPost.module.css";

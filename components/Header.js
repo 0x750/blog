@@ -1,3 +1,6 @@
+import React from "react";
+import PropTypes from "prop-types";
+
 import { useState } from "react";
 
 import Link from "next/link";
@@ -139,6 +142,10 @@ const MobileMenu = ({ closeFunction }) => {
       </animated.div>
     </div>
   );
+};
+
+MobileMenu.propTypes = {
+  closeFunction: PropTypes.func.isRequired,
 };
 
 export default Header;

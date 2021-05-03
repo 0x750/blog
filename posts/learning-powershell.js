@@ -1,8 +1,10 @@
+import React from "react";
+
 import { default as basePostStyles } from "../styles/posts/BlogPost.module.css";
 
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { Prism } from "react-syntax-highlighter";
-import { a11yDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { a11yDark } from "../node_modules/react-syntax-highlighter/dist/esm/styles/prism";
 
 import Layout from "../components/Layout";
 
@@ -30,7 +32,8 @@ const LearningPowershell = () => {
         <a href="https://docs.microsoft.com/fr-fr/powershell/scripting/install/installing-powershell">
           install it
         </a>
-        . Let's explore why it is useful and why you should consider using it.
+        . Let&apos;s explore why it is useful and why you should consider using
+        it.
       </p>
       {/* <img
                 className={basePostStyles.coverimage}
@@ -132,7 +135,7 @@ SerializationVersion           1.1.0.1`}
       <h3>Filtering the output</h3>
 
       <p>
-        Let's say you only want the PowerShell process(es) running on your
+        Let&apos;s say you only want the PowerShell process(es) running on your
         computer.
       </p>
 
@@ -169,8 +172,8 @@ SerializationVersion           1.1.0.1`}
 
       <p>
         Once you filtered your objects, you can pass them to another command,
-        let's gracefully close all PowerShell instances running on your computer
-        with one command :
+        let&apos;s gracefully close all PowerShell instances running on your
+        computer with one command :
       </p>
 
       <Prism language="powershell" style={a11yDark}>

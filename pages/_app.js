@@ -1,3 +1,6 @@
+import React from "react";
+import PropTypes from "prop-types";
+
 import "../styles/globals.css";
 
 import Header from "../components/Header";
@@ -14,5 +17,10 @@ function MyApp({ Component, pageProps }) {
     </>
   );
 }
+
+MyApp.propTypes = {
+  Component: PropTypes.elementType,
+  pageProps: PropTypes.any,
+};
 
 export default MyApp;

@@ -1,3 +1,6 @@
+import React from "react";
+import Proptypes from "prop-types";
+
 import Head from "next/head";
 import published from "../../posts/published";
 // import dynamic from "next/dynamic";
@@ -33,6 +36,11 @@ const BlogPost = ({ slug, metadata }) => {
       <div dangerouslySetInnerHTML={{ __html: ssr }} />
     </>
   );
+};
+
+BlogPost.propTypes = {
+  slug: Proptypes.string,
+  metadata: Proptypes.object,
 };
 
 const getStaticPaths = async () => {

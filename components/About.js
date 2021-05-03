@@ -1,4 +1,6 @@
-import styles from "../styles/components/Home.module.css";
+import React from "react";
+
+// import styles from "../styles/components/Home.module.css";
 
 import { default as basePostStyle } from "../styles/posts/BlogPost.module.css";
 

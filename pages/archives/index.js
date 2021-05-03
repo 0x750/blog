@@ -1,3 +1,6 @@
+import React from "react";
+import PropTypes from "prop-types";
+
 import Head from "next/head";
 import Link from "next/link";
 
@@ -28,6 +31,10 @@ const Archives = ({ articles }) => {
       </Layout>
     </>
   );
+};
+
+Archives.propTypes = {
+  articles: PropTypes.array,
 };
 
 const getStaticProps = async () => {
