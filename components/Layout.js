@@ -21,7 +21,10 @@ const Layout = ({ children, className }) => {
 };
 
 Layout.propTypes = {
-  children: PropTypes.elementType,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
   className: PropTypes.string,
 };
 
