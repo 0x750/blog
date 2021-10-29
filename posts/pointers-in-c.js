@@ -117,7 +117,7 @@ Age is 21 and is stored at address 0x7ffee6ef688c`}
       </Prism>
       <p>
         The memory address where the variable <code>age</code> was stored is
-        given by the operating system. It should be different every time that
+        given by the operating system. It can be different every time that
         the program is executed, because the operating system is not allocating
         the same memory space every time for the program to run.
       </p>
@@ -304,9 +304,136 @@ ages[1] is 53`}
           is a pointer to the first element of the array.
         </li>
         <li>
-          <code>ages[1] is at address 0x7ffee6acd880</code> : 
+          <code>ages[1] is at address 0x7ffee6acd880</code> :{" "}
+          <code>ages[1]</code> is at address <code>ages + 1 * sizeof(int)</code>
+        </li>
+        <li>
+          At line 9 and 10, both syntaxes return the same result. Writing{" "}
+          <code>ages[1]</code> means in reality dereference the pointer at
+          address <code>ages + 1</code>.
+          <br />
+          In arrays, <code>a[b]</code> is the same as <code>*(a + b)</code>,
+          since <code>a</code> and <code>b</code> are added they can be swaped.
+        </li>
+        <li>
+          Meaning that <code>index[array]</code> is correct C, as seen on line
+          11.
         </li>
       </ul>
+
+      <p>
+        C arrays, when declared like this, are really simple, they are a place
+        in the stack, and each element of the array follows each other.
+        <br />A representation in memory would look like this :
+      </p>
+
+      <Prism language="text" style={a11yDark}>
+        {`+--------------+-------------+
+|0x7ffee6acd87c|             |    ^
++--------------+             |    |
+|0x7ffee6acd87d|             |    |
++--------------+   (int)21   |    |  sizeof(int)
+|0x7ffee6acd87e|             |    |
++--------------+             |    |
+|0x7ffee6acd87f|             |    V
++--------------+-------------+
+|0x7ffee6acd880|             |
++--------------+             |
+|0x7ffee6acd881|             |
++--------------+   (int)53   |
+|0x7ffee6acd882|             |
++--------------+             |
+|0x7ffee6acd883|             |
++--------------+-------------+
+|0x7ffee6acd884|             |
++--------------+             |
+|0x7ffee6acd885|             |
++--------------+   (int)72   |
+|0x7ffee6acd886|             |
++--------------+             |
+|0x7ffee6acd887|             |
++--------------+-------------+`}
+      </Prism>
+
+      <p>
+        In C , no matter the implementation, <code>sizeof(char)</code> is always
+        1. If <code>ages</code> was declared using an array of <code>char</code>
+        , like the following :
+      </p>
+
+      <Prism showLineNumbers language="c" style={a11yDark}>
+        {`#include <stdio.h>
+
+int main(int argc, char** argv) {
+    char ages[3] = {21, 53, 72};
+
+    printf("sizeof(char) : %ld\\n", sizeof(char));
+    printf("ages[0] is at address %p\\n", ages);
+    printf("ages[1] is at address %p\\n", ages + 1);
+    printf("ages[1] is %d\\n", ages[1]);
+    printf("ages[1] is %d\\n", *(ages + 1));
+    printf("ages[1] is %d\\n", 1[ages]);
+
+    return 0;
+}`}
+      </Prism>
+      <Prism style={a11yDark} language="text">
+        {`$ gcc arrays.c -Wall -o arrays && ./arrays
+sizeof(char) : 1
+ages[0] is at address 0x7ffee15e686d
+ages[1] is at address 0x7ffee15e686e
+ages[1] is 53
+ages[1] is 53
+ages[1] is 53`}
+      </Prism>
+
+      <p>
+        The pointer here is incremented by 1, <code>char</code> being always of
+        size 1.
+      </p>
+
+      <Prism style={a11yDark} language="text">
+        {`+--------------+----------+ ^
+|0x7ffee15e686d| (char)21 | | sizeof(char) is always 1
++--------------+----------+ v
+|0x7ffee15e686e| (char)53 |
++--------------+----------+
+|0x7ffee15e686f| (char)72 |
++--------------+----------+`}
+      </Prism>
+
+      <p>
+        Strings does not exist in C, they are in fact <u>arrays of char</u>.
+        When declared, the value returned is a pointer to the first element of
+        the array. A null character <code>\0</code> is the last element of the
+        array of the array :
+      </p>
+
+      <Prism
+        showLineNumbers
+        language="c"
+        style={a11yDark}
+        wrapLines={true}
+        lineProps={(lineNumber) => {
+          let style = { display: "block" };
+          if (lineNumber === 5) {
+            style.backgroundColor = "#555";
+          }
+          return { style };
+        }}
+      >
+        {`#include <stdio.h>
+
+int main(int argc, char** argv) {
+    char *text = "This is a string";
+    char *text2 = "This is \\0 a string";
+
+    printf("%s\\n", text);
+    printf("%s\\n", text2);
+
+    return 0;
+}`}
+      </Prism>
 
       <p>🏗 WIP</p>
     </Layout>

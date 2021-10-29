@@ -10,7 +10,7 @@ const About = () => {
       <h1 className={basePostStyle.postTitle}>Welcome</h1>
       <h2>About me</h2>
       <p>
-        My name is <stong>Benoit</stong>, 26, I write software and do film
+        My name is <strong>Benoit</strong>, 26, I write software and do film
         photography.
       </p>
       {/* <p className={styles.graphicDesign}>graphic design is my passion</p> */}
